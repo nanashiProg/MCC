@@ -50,4 +50,4 @@ def calculations(latitude, longtitude, height, weight, diameter, max_diameter, w
 
 
 
-eel.start('main.html', size=(1000, 1000))             # Start (this blocks and enters loop)
+eel.start('index.html', mode='chrome', block=True, cmdline_args=['--icon-name=/web/icon_web.ico'])             # Start (this blocks and enters loop)
