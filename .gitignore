@@ -4,4 +4,4 @@
 .venv/
 venv/
 ENV/
-results.txt/
+results.txt
