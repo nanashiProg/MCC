@@ -25,7 +25,7 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
     with open("results.txt", "a", encoding='utf-8') as f:
         f.write(f"{latitude}, {longtitude}, {height}, {height}, {weight}, {diameter}. {max_diameter}, {weight_ball}, {chute_diameter}, {speed}, {chute_speed}\n")
 
-    # Можно выполнить сложные раеты, обратиться к БД и т.д.
+    # Можно выполнить сложные расчеты, обратиться к БД и т.д.
     # result = some_long_calculation(surname, grade)
 
     # --- Отправка ответа обратно в JS ---
