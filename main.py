@@ -22,13 +22,9 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
     }
 
 try:
-    eel.init('web')
+    eel.init('front') 
     print("Инициализация прошла успешно")
-    eel.start('index.html', block=True)
+    eel.start('index.html', block=True, size=(1000,1000))
 except Exception as e:
     print(f"Произошла ошибка при запуске: {e}")
-    input("Нажмите Enter, чтобы выйти...")
-
-
-
-eel.start('index.html',size=(1000,1000))             # Start (this blocks and enters loop)
+    input("Нажмите Enter, чтобы выйти...")           # Start (this blocks and enters loop)
