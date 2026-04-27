@@ -11,6 +11,16 @@ M = 0.029   # молярная масса воздуха
 g = 9.81    # ускорение свободного падения
 r = 0.1785   # плотность гелия
 
+
+def calculations(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
+    V0 = 4/3 * math.pi * (int(diameter)/2)**3
+
+    math_result = (100000*M/(R*20)-r)*V0*g
+
+
+
+    return math_result
+
 # 2. Декоратор @eel.expose делает эту функцию видимой для JavaScript
 @eel.expose
 def process_user_data(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
@@ -38,14 +48,8 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
             "result": math_result
     }
 
-def calculations(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
-    V0 = 4/3 * math.pi * (int(diameter)/2)**3
-
-    math_result = (99992*M/(R*20)-r)*V0*g
 
 
-
-    return math_result
 
 
 
