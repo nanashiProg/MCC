@@ -3,6 +3,12 @@ from back.calculations import calculation
 
 # 2. Декоратор @eel.expose делает эту функцию видимой для JavaScript
 
+
+
+# Set front files folder and optionally specify which file types to check for eel.expose()
+#   *Default allowed_extensions are: ['.js', '.html', '.txt', '.htm', '.xhtml']
+eel.init('front', allowed_extensions=['.js', '.html'])
+
 @eel.expose
 def process_user_data(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
     """
@@ -28,11 +34,5 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
             "message": f"Спасибо! Данные сохранены.",
             "result": math_result
     }
-
-# Set front files folder and optionally specify which file types to check for eel.expose()
-#   *Default allowed_extensions are: ['.js', '.html', '.txt', '.htm', '.xhtml']
-eel.init('front', allowed_extensions=['.js', '.html'])
-
-
 
 eel.start('index.html',size=(1000,1000))             # Start (this blocks and enters loop)
