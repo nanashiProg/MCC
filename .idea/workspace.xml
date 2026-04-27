@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e21f11b9-0148-447e-b984-38574394df21" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/back/calculations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middle/user_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/front/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/forms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/map.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>

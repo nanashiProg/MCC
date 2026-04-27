@@ -1,27 +1,8 @@
 import eel
-
-import math
-
-# Set web files folder and optionally specify which file types to check for eel.expose()
-#   *Default allowed_extensions are: ['.js', '.html', '.txt', '.htm', '.xhtml']
-eel.init('web', allowed_extensions=['.js', '.html'])
-
-R = 8.314   # универсальная газовая постоянная
-M = 0.029   # молярная масса воздуха
-g = 9.81    # ускорение свободного падения
-r = 0.1785   # плотность гелия
-
-
-def calculations(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
-    V0 = 4/3 * math.pi * (int(diameter)/2)**3
-
-    math_result = (100000*M/(R*20)-r)*V0*g
-
-
-
-    return math_result
+from back.calculations import calculation
 
 # 2. Декоратор @eel.expose делает эту функцию видимой для JavaScript
+
 @eel.expose
 def process_user_data(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
     """
@@ -29,7 +10,7 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
     Она получает данные из формы и что-то с ними делает.
     """
 
-    math_result = calculations(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed)
+    math_result = calculation(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed)
 
     print(f"Python получил данные: {latitude} {longtitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
 
@@ -48,9 +29,9 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
             "result": math_result
     }
 
-
-
-
+# Set front files folder and optionally specify which file types to check for eel.expose()
+#   *Default allowed_extensions are: ['.js', '.html', '.txt', '.htm', '.xhtml']
+eel.init('front', allowed_extensions=['.js', '.html'])
 
 
 
