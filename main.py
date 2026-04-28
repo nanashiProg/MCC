@@ -41,4 +41,4 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
             "net_lift": F_net_lift
     }
 
-eel.start('index.html',size=(1000,1000))             # Start (this blocks and enters loop)
+eel.start('index.html', mode='default',size=(1000,1000))  
