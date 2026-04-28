@@ -1,5 +1,5 @@
 import eel
-from back.calculations import calculation
+from back.calculation_start_par import startV, startF_lift, startF_net_lift
 
 # 2. Декоратор @eel.expose делает эту функцию видимой для JavaScript
 
@@ -16,7 +16,11 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
     Она получает данные из формы и что-то с ними делает.
     """
 
-    math_result = calculation(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed)
+    V0 = startV(diameter)
+
+    F_lift = startF_lift(V0)
+
+    F_net_lift = startF_net_lift(F_lift, weight, weight_ball)
 
     print(f"Python получил данные: {latitude} {longtitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
 
@@ -32,7 +36,9 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
     # Eel сам сконвертирует словарь в JSON-объект для JS
     return {"status": "success",
             "message": f"Спасибо! Данные сохранены.",
-            "result": math_result
+            "space": V0,
+            "lift": F_lift,
+            "net_lift": F_net_lift
     }
 
 eel.start('index.html',size=(1000,1000))             # Start (this blocks and enters loop)
