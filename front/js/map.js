@@ -30,6 +30,13 @@ var map = L.map('map', {
     zoom: 10
 });
 
+// Кастомная иконка для маркера
+const customIcon = L.divIcon({
+    className: 'custom-marker',
+    html: '<div class="dot"></div>',
+    iconSize: [10, 10]
+});
+
 L.control.layers(baseMaps).addTo(map);
 
 // Координаты при движении мыши
@@ -48,7 +55,7 @@ map.on('click', function (e) {
     if (marker) {
         marker.setLatLng(e.latlng);
     } else {
-        marker = L.marker(e.latlng).addTo(map);
+        marker = L.marker(e.latlng, { icon: customIcon }).addTo(map);
     }
 
     document.getElementById('latitude').value = lat.toFixed(5);
@@ -67,7 +74,7 @@ function updateMarkerFromInputs() {
     if (marker) {
         marker.setLatLng(latlng);
     } else {
-        marker = L.marker(latlng).addTo(map);
+        marker = L.marker(latlng, { icon: customIcon }).addTo(map);
     }
 
     map.setView(latlng);

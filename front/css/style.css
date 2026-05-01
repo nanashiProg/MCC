@@ -22,6 +22,14 @@ body {
   display: none;
 }
 
+.custom-marker .dot {
+  width: 8px;
+  height: 8px;
+  background: rgb(218, 44, 44);
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
 #serverResponse{
     margin-bottom: 10px;
 }
