@@ -42,8 +42,9 @@ map.on('mousemove', function (e) {
 // Координаты при клике по карте (заполняются в форму)
 let marker;
 map.on('click', function (e) {
-    const { lat, lng } = e.latlng;
-
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+    
     if (marker) {
         marker.setLatLng(e.latlng);
     } else {
@@ -52,4 +53,35 @@ map.on('click', function (e) {
 
     document.getElementById('latitude').value = lat.toFixed(5);
     document.getElementById('longitude').value = lng.toFixed(5);
+});
+
+
+// Обновление маркера из input
+function updateMarkerFromInputs() {
+    const lat = parseFloat(document.getElementById('latitude').value);
+    const lng = parseFloat(document.getElementById('longitude').value);
+
+    if (isNaN(lat) || isNaN(lng)) return;
+    const latlng = [lat, lng];
+
+    if (marker) {
+        marker.setLatLng(latlng);
+    } else {
+        marker = L.marker(latlng).addTo(map);
+    }
+
+    map.setView(latlng);
+}
+
+// Обновление маркера при нажатии Enter в input
+document.getElementById('latitude').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        updateMarkerFromInputs();
+    }
+});
+
+document.getElementById('longitude').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        updateMarkerFromInputs();
+    }
 });
