@@ -9,7 +9,7 @@ form.addEventListener('submit', async (event) => {
 
     // Собираем данные из полей ввода
     const latitude = document.getElementById('latitude').value;
-    const longtitude = document.getElementById('longtitude').value;
+    const longitude = document.getElementById('longitude').value;
     const height = document.getElementById('height').value;
     const weight = document.getElementById('weight').value;
     const diameter = document.getElementById('diameter').value;
