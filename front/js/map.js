@@ -1,5 +1,5 @@
 // 1. Инициализируем карту и задаем центр и масштаб
-var map = L.map('map').setView([55.751244, 37.618423], 12); // Москва
+var map = L.map('map').setView([55.751244, 37.618423], 12);
 
 // 2. Добавляем слой с тайлами (внешний вид карты)
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {

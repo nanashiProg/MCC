@@ -4,13 +4,9 @@
     <meta charset="utf-8">
         <meta name="author" content="Ахундов Дмитрий">
     <title>ЦМИТ "Перспектива"</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <script type="text/javascript" src="js/eel.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <style> #map { height: 600px; } </style>
+    <link rel="stylesheet" href="css/style.css"> <!--Подключаем CSS для стилизации страницы--> 
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"> <!-- Иконка для вкладки браузера -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> <!-- Подключаем CSS для библиотеки Leaflet (карты) -->
   </head>
 
   <body>
@@ -46,13 +42,12 @@
 
       <button type="submit">Рассчитать</button>
     </form>
-
     </div>
 
     <div id="serverResponse"></div>
-
-
     <div id="map"></div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/main.js"></script>
     <script src="js/map.js"></script>
   </body>

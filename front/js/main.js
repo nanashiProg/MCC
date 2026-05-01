@@ -2,7 +2,7 @@
 const form = document.getElementById('userForm');
 const responseDiv = document.getElementById('serverResponse');
 
-// Вешаем обработчик события 'submit' на форму
+// При нажатии на кнопку "Отправить" выполняется эта функция
 form.addEventListener('submit', async (event) => {
     // Отменяем стандартную отправку формы (перезагрузку страницы)
     event.preventDefault();
