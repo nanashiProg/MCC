@@ -1,5 +1,3 @@
-
-
 // Слои карт
 const osm = L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -23,10 +21,35 @@ const baseMaps = {
 };
 
 // Инициализация карты
+const latitude = parseFloat(document.getElementById('latitude')?.value) || 55.751244;
+const longitude = parseFloat(document.getElementById('longitude')?.value) || 37.618423;
+
 var map = L.map('map', {
-    center: [55.7558, 37.6173],
-    zoom: 10,
-    layers: [osm]
+    center: [latitude, longitude],
+    layers: [osm],
+    zoom: 10
 });
 
 L.control.layers(baseMaps).addTo(map);
+
+// Координаты при движении мыши
+map.on('mousemove', function (e) {
+    document.getElementById('coordinates').innerText =
+        "Широта: " + e.latlng.lat.toFixed(5) +
+        " | Долгота: " + e.latlng.lng.toFixed(5);
+});
+
+// Координаты при клике по карте (заполняются в форму)
+let marker;
+map.on('click', function (e) {
+    const { lat, lng } = e.latlng;
+
+    if (marker) {
+        marker.setLatLng(e.latlng);
+    } else {
+        marker = L.marker(e.latlng).addTo(map);
+    }
+
+    document.getElementById('latitude').value = lat.toFixed(5);
+    document.getElementById('longitude').value = lng.toFixed(5);
+});
