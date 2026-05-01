@@ -5,8 +5,19 @@
 #serverResponse{
     margin-bottom: 10px;
 }
+.box {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+    background-color: rgba(185, 184, 184, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 
 #map { 
     height: 100vh;
-    width: 100%; 
+    width: 100%;
+    z-index: 1;
 }
