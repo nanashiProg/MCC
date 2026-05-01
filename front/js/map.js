@@ -1,17 +1,32 @@
-// 1. Инициализируем карту и задаем центр и масштаб
-var map = L.map('map').setView([55.751244, 37.618423], 12);
 
-// 2. Добавляем слой с тайлами (внешний вид карты)
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
 
-// 3. Добавляем маркер (точку)
-var marker = L.marker([55.751244, 37.618423]).addTo(map);
+// Слои карт
+const osm = L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  { attribution: 'OpenStreetMap' }
+);
 
-// 4. Добавляем всплывающее окно к маркеру
-marker.bindPopup("<b>Красная площадь</b><br>Здесь можно увидеть самое сердце Москвы.").openPopup();
+const satellite = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  { attribution: 'Esri' }
+);
 
-// 5. Пример добавления второй точки
-var marker2 = L.marker([55.741469, 37.605517]).addTo(map);
-marker2.bindPopup("<b>Третьяковская галерея</b>");
+const dark = L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  { attribution: 'CartoDB' }
+);
+
+const baseMaps = {
+  "Обычная": osm,
+  "Спутник": satellite,
+  "Тёмная": dark
+};
+
+// Инициализация карты
+var map = L.map('map', {
+    center: [55.7558, 37.6173],
+    zoom: 10,
+    layers: [osm]
+});
+
+L.control.layers(baseMaps).addTo(map);
