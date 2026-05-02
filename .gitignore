@@ -1,9 +1,9 @@
 # Default ignored files
 /shelf/
-/.idea
+/.idea/
 .venv/
 venv/
 ENV/
-
+results.txt
 __pycache__/
 *.pyc
