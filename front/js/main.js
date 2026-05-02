@@ -30,7 +30,10 @@ form.addEventListener('submit', async (event) => {
     const result = await eel.process_user_data(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed)();
     // result — это объект, который вернула функция Python
                 if (result.status === 'success') {
-                    responseDiv.innerHTML = `<p style="color: green;">✅ ${result.message}, ${result.result}</p>`;
+                    responseDiv.innerHTML = `<p style="color: green;">✅ ${result.message} <br>
+                    Объем гелия на старте: ${result.space} <br>
+                    Подъемная сила (тяга) на старте% ${result.lift} <br>
+                    Чистая подъемная сила: ${result.net_lift}</p>`;
                     form.reset(); // Очищаем форму
                 } else {
                     responseDiv.innerHTML = `<p style="color: red;">❌ Ошибка: ${result.message}</p>`;
