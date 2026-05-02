@@ -5,11 +5,7 @@ M = 0.029   # молярная масса воздуха
 g = 9.81    # ускорение свободного падения
 r = 0.1785   # плотность гелия
 
-<<<<<<< HEAD:back/calculations.py
-def calculation(diameter, weight, chute_diameter, speed, chute_speed):
-=======
 def startV(diameter):
->>>>>>> c21c8015929b4ae4792385cb95173278f506a655:back/calculation_start_par.py
     V0 = 4/3 * math.pi * (int(diameter)/2)**3
     return V0
 

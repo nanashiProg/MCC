@@ -24,17 +24,9 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
 
     print(f"Python получил данные: {latitude} {longtitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
 
-<<<<<<< HEAD
-=======
-    # --- Здесь ваша бизнес-логика ---
-    # Сохранение в файл
-    with open("results.txt", "a", encoding='utf-8') as f:
-        f.write(f"{latitude}, {longtitude}, {height}, {height}, {weight}, {diameter}. {max_diameter}, {weight_ball}, {chute_diameter}, {speed}, {chute_speed}\n")
-
     # Можно выполнить сложные расчеты, обратиться к БД и т.д.
     # result = some_long_calculation(surname, grade)
 
->>>>>>> c21c8015929b4ae4792385cb95173278f506a655
     # --- Отправка ответа обратно в JS ---
     # Eel сам сконвертирует словарь в JSON-объект для JS
     return {"status": "success",
@@ -50,4 +42,4 @@ try:
     eel.start('index.html', block=True, size=(1000,1000))
 except Exception as e:
     print(f"Произошла ошибка при запуске: {e}")
-    input("Нажмите Enter, чтобы выйти...")           # Start (this blocks and enters loop)
+    input("Нажмите Enter, чтобы выйти...")   
