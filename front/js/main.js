@@ -31,9 +31,9 @@ form.addEventListener('submit', async (event) => {
     // result — это объект, который вернула функция Python
                 if (result.status === 'success') {
                     responseDiv.innerHTML = `<p style="color: green;">✅ ${result.message} <br>
-                    Объем гелия на старте: ${result.space} <br>
-                    Подъемная сила (тяга) на старте% ${result.lift} <br>
-                    Чистая подъемная сила: ${result.net_lift}</p>`;
+                    Объем гелия на старте: ${result.space.toFixed(2)} <br>
+                    Подъемная сила (тяга) на старте ${result.lift.toFixed(2)} <br>
+                    Чистая подъемная сила: ${result.net_lift.toFixed(2)}</p>`;
                     form.reset(); // Очищаем форму
                 } else {
                     responseDiv.innerHTML = `<p style="color: red;">❌ Ошибка: ${result.message}</p>`;
