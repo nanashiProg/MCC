@@ -10,7 +10,7 @@ from back.calculation_start_par import startV, startF_lift, startF_net_lift
 eel.init('front', allowed_extensions=['.js', '.html'])
 
 @eel.expose
-def process_user_data(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
+def process_user_data(latitude, longitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
     """
     Эта функция будет вызвана из браузера.
     Она получает данные из формы и что-то с ними делает.
@@ -22,7 +22,7 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
 
     F_net_lift = startF_net_lift(F_lift, weight, weight_ball)
 
-    print(f"Python получил данные: {latitude} {longtitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
+    print(f"Python получил данные: {latitude} {longitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
 
     # Можно выполнить сложные расчеты, обратиться к БД и т.д.
     # result = some_long_calculation(surname, grade)
