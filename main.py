@@ -1,14 +1,9 @@
 import eel
 from back.calculation_start_par import startV, startF_lift, startF_net_lift
 
-# 2. Декоратор @eel.expose делает эту функцию видимой для JavaScript
+eel.init('front', allowed_extensions=['.js', '.html', '.css'])
 
-
-
-# Set front files folder and optionally specify which file types to check for eel.expose()
-#   *Default allowed_extensions are: ['.js', '.html', '.txt', '.htm', '.xhtml']
-eel.init('front', allowed_extensions=['.js', '.html'])
-
+# Функция, которая будет вызвана из JavaScript
 @eel.expose
 def process_user_data(latitude, longitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
     """
@@ -24,11 +19,7 @@ def process_user_data(latitude, longitude, height, weight, diameter, max_diamete
 
     print(f"Python получил данные: {latitude} {longitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
 
-    # Можно выполнить сложные расчеты, обратиться к БД и т.д.
-    # result = some_long_calculation(surname, grade)
-
-    # --- Отправка ответа обратно в JS ---
-    # Eel сам сконвертирует словарь в JSON-объект для JS
+    # Отправка ответа обратно в JS 
     return {"status": "success",
             "message": f"Спасибо! Данные сохранены.",
             "space": V0,
@@ -36,6 +27,7 @@ def process_user_data(latitude, longitude, height, weight, diameter, max_diamete
             "net_lift": F_net_lift
     }
 
+# Запуск Eel
 try:
     eel.init('front') 
     print("Инициализация прошла успешно")
