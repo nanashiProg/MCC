@@ -1,16 +1,11 @@
 import eel
 from back.calculation_start_par import startV, startF_lift, startF_net_lift
 
-# 2. Декоратор @eel.expose делает эту функцию видимой для JavaScript
+eel.init('front', allowed_extensions=['.js', '.html', '.css'])
 
-
-
-# Set front files folder and optionally specify which file types to check for eel.expose()
-#   *Default allowed_extensions are: ['.js', '.html', '.txt', '.htm', '.xhtml']
-eel.init('front', allowed_extensions=['.js', '.html'])
-
+# Функция, которая будет вызвана из JavaScript
 @eel.expose
-def process_user_data(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
+def process_user_data(latitude, longitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed):
     """
     Эта функция будет вызвана из браузера.
     Она получает данные из формы и что-то с ними делает.
@@ -22,18 +17,9 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
 
     F_net_lift = startF_net_lift(F_lift, weight, weight_ball)
 
-    print(f"Python получил данные: {latitude} {longtitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
+    print(f"Python получил данные: {latitude} {longitude} {height} {weight} {diameter} {max_diameter} {weight_ball} {chute_diameter} {speed} {chute_speed}")
 
-    # --- Здесь ваша бизнес-логика ---
-    # Сохранение в файл
-    with open("results.txt", "a", encoding='utf-8') as f:
-        f.write(f"{latitude}, {longtitude}, {height}, {height}, {weight}, {diameter}. {max_diameter}, {weight_ball}, {chute_diameter}, {speed}, {chute_speed}\n")
-
-    # Можно выполнить сложные расчеты, обратиться к БД и т.д.
-    # result = some_long_calculation(surname, grade)
-
-    # --- Отправка ответа обратно в JS ---
-    # Eel сам сконвертирует словарь в JSON-объект для JS
+    # Отправка ответа обратно в JS 
     return {"status": "success",
             "message": f"Спасибо! Данные сохранены.",
             "space": V0,
@@ -41,4 +27,11 @@ def process_user_data(latitude, longtitude, height, weight, diameter, max_diamet
             "net_lift": F_net_lift
     }
 
-eel.start('index.html',size=(1000,1000))             # Start (this blocks and enters loop)
+# Запуск Eel
+try:
+    eel.init('front') 
+    print("Инициализация прошла успешно")
+    eel.start('index.html', block=True, size=(1000,1000))
+except Exception as e:
+    print(f"Произошла ошибка при запуске: {e}")
+    input("Нажмите Enter, чтобы выйти...")   

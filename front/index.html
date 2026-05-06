@@ -4,57 +4,53 @@
     <meta charset="utf-8">
         <meta name="author" content="Ахундов Дмитрий">
     <title>ЦМИТ "Перспектива"</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- Include eel.js - note this file doesn't exist in the 'front' directory -->
-    <script type="text/javascript" src="/eel.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <style> #map { height: 600px; } </style>
+    <link rel="stylesheet" href="css/style.css"> <!--Подключаем CSS для стилизации страницы--> 
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png"> <!-- Иконка для вкладки браузера -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> <!-- Подключаем CSS для библиотеки Leaflet (карты) -->
   </head>
 
   <body>
-    <div class="box">
+    <div id="coordinates"></div>
+    <div class="panel">
     <form id="userForm">
-      <label for="latitude">Введите координаты старта:</label>
-      <input type = "text" id="latitude" name="latitude" placeholder="широта" class="form">
-      <input type = "text" id="longtitude" name="longtitude" placeholder="долгота" class="form"><br>
+      <label for="latitude">Координаты старта:</label>
+      <input type = "text" id="latitude" name="latitude" placeholder="Широта" class="form">
+      <input type = "text" id="longitude" name="longitude" placeholder="Долгота" class="form"><br>
 
-      <label for="height">Введите высоту старта над уровнем моря, м.:</label>
+      <label for="height">Высота старта над уровнем моря, м.:</label>
       <input id="height" name="height" class="form"><br>
 
-      <label for="weight">Введите массу полезной нагрузки, кг.:</label>
+      <label for="weight">Масса полезной нагрузки, кг.:</label>
       <input id="weight" name="weight" class="form"><br>
 
-      <label for="diameter">Введите начальный диаметр шара, м.:</label>
+      <label for="diameter">Начальный диаметр шара, м.:</label>
       <input id="diameter" name="diameter" class="form"><br>
 
-      <label for="max_diameter">Введите максимальный диаметр шара, м.:</label>
+      <label for="max_diameter">Максимальный диаметр шара, м.:</label>
       <input id="max_diameter" name="max_diameter" class="form"><br>
 
-      <label for="weight_ball">Введите массу оболочки, кг.:</label>
+      <label for="weight_ball">Масса оболочки, кг.:</label>
       <input id="weight_ball" name="weight_ball" class="form"><br>
 
-      <label for="chute_diameter">Введите диаметр парашюта, м.:</label>
+      <label for="chute_diameter">Диаметр парашюта, м.:</label>
       <input id="chute_diameter" name="chute_diameter" class="form"><br>
 
-      <label for="speed">Введите скорость подъема, м/с.:</label>
+      <label for="speed">Скорость подъема, м/с.:</label>
       <input id="speed" name="speed" class="form"><br>
 
-      <label for="chute_speed">Введите планируемую скорость спуска на парашюте, м/с.:</label>
+      <label for="chute_speed">Планируемая скорость спуска на парашюте, м/с.:</label>
       <input id="chute_speed" name="chute_speed" class="form"><br>
 
       <button type="submit">Рассчитать</button>
+      <div id="serverResponse"></div>
     </form>
-
     </div>
 
-    <div id="serverResponse"></div>
-
-
     <div id="map"></div>
-    <script src="map.js"></script>
-    <script src="forms.js"></script>
+    
+    <script src="/eel.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
   </body>
 </html>

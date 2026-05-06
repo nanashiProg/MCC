@@ -2,14 +2,14 @@
 const form = document.getElementById('userForm');
 const responseDiv = document.getElementById('serverResponse');
 
-// Вешаем обработчик события 'submit' на форму
+// При нажатии на кнопку "Отправить" выполняется эта функция
 form.addEventListener('submit', async (event) => {
     // Отменяем стандартную отправку формы (перезагрузку страницы)
     event.preventDefault();
 
     // Собираем данные из полей ввода
     const latitude = document.getElementById('latitude').value;
-    const longtitude = document.getElementById('longtitude').value;
+    const longitude = document.getElementById('longitude').value;
     const height = document.getElementById('height').value;
     const weight = document.getElementById('weight').value;
     const diameter = document.getElementById('diameter').value;
@@ -20,20 +20,20 @@ form.addEventListener('submit', async (event) => {
     const chute_speed = document.getElementById('chute_speed').value;
 
     // Небольшая валидация на фронте
-    if (!latitude || !longtitude || !height || !weight || !diameter || !max_diameter || !weight_ball || !chute_diameter || !speed || !chute_speed) {
+    if (!latitude || !longitude || !height || !weight || !diameter || !max_diameter || !weight_ball || !chute_diameter || !speed || !chute_speed) {
         responseDiv.innerHTML = '<p style="color: red;">Пожалуйста, заполните все поля!</p>';
         return;
     }
     try {
     // ★ ВЫЗОВ PYTHON-ФУНКЦИИ ★
     // Этот асинхронный вызов отправляет данные в Python-функцию process_user_data
-    const result = await eel.process_user_data(latitude, longtitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed)();
+    const result = await eel.process_user_data(latitude, longitude, height, weight, diameter, max_diameter, weight_ball, chute_diameter, speed, chute_speed)();
     // result — это объект, который вернула функция Python
                 if (result.status === 'success') {
                     responseDiv.innerHTML = `<p style="color: green;">✅ ${result.message} <br>
-                    Объем гелия на старте: ${result.space} <br>
-                    Подъемная сила (тяга) на старте% ${result.lift} <br>
-                    Чистая подъемная сила: ${result.net_lift}</p>`;
+                    Объем гелия на старте: ${result.space.toFixed(2)} <br>
+                    Подъемная сила (тяга) на старте ${result.lift.toFixed(2)} <br>
+                    Чистая подъемная сила: ${result.net_lift.toFixed(2)}</p>`;
                     form.reset(); // Очищаем форму
                 } else {
                     responseDiv.innerHTML = `<p style="color: red;">❌ Ошибка: ${result.message}</p>`;
