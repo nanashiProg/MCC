@@ -9,3 +9,4 @@ __pycache__/
 *.pyc
 back/weather/data_with_gh.grib
 back/weather/data_with_gh.grib.5b7b6.idx
+back/weather/.ecmwfapirc.json
