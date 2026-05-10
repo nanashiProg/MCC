@@ -44,3 +44,40 @@ form.addEventListener('submit', async (event) => {
                 responseDiv.innerHTML = '<p style="color: red;">Произошла ошибка при отправке данных.</p>';
             }
         });
+
+const formApi = document.getElementById('userForm_api');
+const responseDivApi = document.getElementById('serverResponse_api');
+
+formApi.addEventListener('submit', async (event) => {
+    // Отменяем стандартную отправку формы (перезагрузку страницы)
+    event.preventDefault();
+
+    // Собираем данные из полей ввода
+    const latitudeApi = document.getElementById('latitude_api').value;
+    const longitudeApi = document.getElementById('longitude_api').value;
+    const datetimelocalApi = document.getElementById('launch_datetime_api').value;
+    const speedApi = document.getElementById('speed_api').value;
+    const burst_altitudeApi = document.getElementById('burst_altitude_api').value;
+    const chute_speedApi = document.getElementById('chute_speed_api').value;
+
+    // Небольшая валидация на фронте
+    if (!latitudeApi || !longitudeApi || !datetimelocalApi || !speedApi || !burst_altitudeApi || !chute_speedApi) {
+        responseDivApi.innerHTML = '<p style="color: red;">Пожалуйста, заполните все поля!</p>';
+        return;
+    }
+    try {
+    // ★ ВЫЗОВ PYTHON-ФУНКЦИИ ★
+    // Этот асинхронный вызов отправляет данные в Python-функцию process_user_data
+    const resultApi = await eel.api(latitudeApi, longitudeApi, datetimelocalApi, speedApi, burst_altitudeApi, chute_speedApi)();
+    // result — это объект, который вернула функция Python
+                if (resultApi.status === 'success') {
+                    responseDivApi.innerHTML = `<p style="color: green;">✅ ${resultApi.message}</p>`;
+                    formApi.reset(); // Очищаем форму
+                } else {
+                    responseDivApi.innerHTML = `<p style="color: red;">❌ Ошибка: ${resultApi.message}</p>`;
+                }
+            } catch (error) {
+                console.error("Ошибка при вызове Python:", error);
+                responseDivApi.innerHTML = '<p style="color: red;">Произошла ошибка при отправке данных.</p>';
+            }
+        });

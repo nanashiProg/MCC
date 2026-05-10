@@ -60,6 +60,8 @@ map.on('click', function (e) {
 
     document.getElementById('latitude').value = lat.toFixed(5);
     document.getElementById('longitude').value = lng.toFixed(5);
+    document.getElementById('latitude_api').value = lat.toFixed(5);
+    document.getElementById('longitude_api').value = lng.toFixed(5);
 });
 
 
