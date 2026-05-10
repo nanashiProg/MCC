@@ -10,42 +10,140 @@
   </head>
 
   <body>
+    <!-- Панель отображения координат под курсором -->
     <div id="coordinates"></div>
+    
+    <!-- Панель ввода -->
     <div class="panel">
-    <form id="userForm">
-      <label for="latitude">Координаты старта:</label>
-      <input type = "text" id="latitude" name="latitude" placeholder="Широта" class="form">
-      <input type = "text" id="longitude" name="longitude" placeholder="Долгота" class="form"><br>
+      <form id="userForm">
+        <label for="latitude">Координаты старта:</label>
+        <input type = "text" id="latitude" name="latitude" placeholder="Широта" class="form">
+        <input type = "text" id="longitude" name="longitude" placeholder="Долгота" class="form"><br>
 
-      <label for="height">Высота старта над уровнем моря, м.:</label>
-      <input id="height" name="height" class="form"><br>
+        <label for="height">Высота старта над уровнем моря, м.:</label>
+        <input id="height" name="height" class="form"><br>
 
-      <label for="weight">Масса полезной нагрузки, кг.:</label>
-      <input id="weight" name="weight" class="form"><br>
+        <label for="weight">Масса полезной нагрузки, кг.:</label>
+        <input id="weight" name="weight" class="form"><br>
 
-      <label for="diameter">Начальный диаметр шара, м.:</label>
-      <input id="diameter" name="diameter" class="form"><br>
+        <label for="diameter">Начальный диаметр шара, м.:</label>
+        <input id="diameter" name="diameter" class="form"><br>
 
-      <label for="max_diameter">Максимальный диаметр шара, м.:</label>
-      <input id="max_diameter" name="max_diameter" class="form"><br>
+        <label for="max_diameter">Максимальный диаметр шара, м.:</label>
+        <input id="max_diameter" name="max_diameter" class="form"><br>
 
-      <label for="weight_ball">Масса оболочки, кг.:</label>
-      <input id="weight_ball" name="weight_ball" class="form"><br>
+        <label for="weight_ball">Масса оболочки, кг.:</label>
+        <input id="weight_ball" name="weight_ball" class="form"><br>
 
-      <label for="chute_diameter">Диаметр парашюта, м.:</label>
-      <input id="chute_diameter" name="chute_diameter" class="form"><br>
+        <label for="chute_diameter">Диаметр парашюта, м.:</label>
+        <input id="chute_diameter" name="chute_diameter" class="form"><br>
 
-      <label for="speed">Скорость подъема, м/с.:</label>
-      <input id="speed" name="speed" class="form"><br>
+        <label for="speed">Скорость подъема, м/с.:</label>
+        <input id="speed" name="speed" class="form"><br>
 
-      <label for="chute_speed">Планируемая скорость спуска на парашюте, м/с.:</label>
-      <input id="chute_speed" name="chute_speed" class="form"><br>
+        <label for="chute_speed">Планируемая скорость спуска на парашюте, м/с.:</label>
+        <input id="chute_speed" name="chute_speed" class="form"><br>
 
-      <button type="submit">Рассчитать</button>
-      <div id="serverResponse"></div>
-    </form>
+        <button type="submit">Рассчитать</button>
+        <div id="serverResponse"></div>
+      </form>
     </div>
 
+
+
+    <!-- Панель ввода -->
+    <div class="panel_api">
+      <form id="userForm_api">
+
+        <!-- Координаты запуска -->
+        <label for="latitude_api">Координаты старта:</label>
+        <input
+          type="number"
+          id="latitude_api"
+          name="latitude"
+          placeholder="Широта"
+          class="form"
+          step="0.00001"
+          min="-90"
+          max="90"
+          required
+        >
+
+        <input
+          type="number"
+          id="longitude_api"
+          name="longitude"
+          placeholder="Долгота"
+          class="form"
+          step="0.00001"
+          min="-180"
+          max="180"
+          required
+        >
+        <br>
+
+        <!-- Дата и время запуска -->
+        <label for="launch_datetime_api">Дата и время запуска (UTC):</label>
+        <input
+          type="datetime-local"
+          id="launch_datetime_api"
+          name="launch_datetime"
+          class="form"
+          required
+        >
+        <br>
+
+        <!-- Скорость подъёма -->
+        <label for="speed_api">Скорость подъёма, м/с:</label>
+        <input
+          type="number"
+          id="speed_api"
+          name="speed"
+          class="form"
+          step="0.1"
+          min="0.1"
+          value="5.0"
+          required
+        >
+        <br>
+
+        <!-- Высота разрыва -->
+        <label for="burst_altitude_api">Высота разрыва, м:</label>
+        <input
+          type="number"
+          id="burst_altitude_api"
+          name="burst_altitude"
+          class="form"
+          step="100"
+          min="1000"
+          value="30000"
+          required
+        >
+        <br>
+
+        <!-- Скорость спуска -->
+        <label for="chute_speed_api">Скорость спуска, м/с:</label>
+        <input
+          type="number"
+          id="chute_speed_api"
+          name="chute_speed"
+          class="form"
+          step="0.1"
+          min="0.1"
+          value="5.0"
+          required
+        >
+        <br>
+
+        <!-- Кнопка запуска -->
+        <button type="submit">Рассчитать траекторию</button>
+
+        <!-- Ответ от Python -->
+        <div id="serverResponse_api"></div>
+      </form>
+    </div>
+
+    <!-- Карта -->
     <div id="map"></div>
     
     <script src="/eel.js"></script>
